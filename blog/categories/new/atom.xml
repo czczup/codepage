@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: New | My Octopress Blog]]></title>
+  <link href="http://czczup.github.io/blog/categories/new/atom.xml" rel="self"/>
+  <link href="http://czczup.github.io/"/>
+  <updated>2018-02-13T10:05:57+08:00</updated>
+  <id>http://czczup.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello OctoPress]]></title>
+    <link href="http://czczup.github.io/blog/2018/02/13/hello-octopress/"/>
+    <updated>2018-02-13T09:42:59+08:00</updated>
+    <id>http://czczup.github.io/blog/2018/02/13/hello-octopress</id>
+    <content type="html"><![CDATA[<h1>你好Octopress</h1>
+
+<h2>做一个自己的博客</h2>
+
+<p><strong>加粗</strong>
+<code>标亮</code></p>
+
+<ul>
+<li>Android
+
+<ul>
+<li>PHP</li>
+</ul>
+</li>
+<li><blockquote><p>引用</p></blockquote></li>
+</ul>
+
+
+<p>{% codeblock lang:java This is a java %}
+package chat_client;</p>
+
+<p>import java.awt.<em>;
+import java.awt.event.</em>;
+import javax.swing.*;</p>
+
+<p>import util.SwingUtils;
+/<em>*
+ * 自定义 Dialog
+ * @author 许楠钒
+ * @date 2018/1/3
+ </em>/</p>
+
+<p>@SuppressWarnings(&ldquo;serial&rdquo;)
+public class DialogForClient extends JDialog implements ActionListener {</p>
+
+<pre><code>final static int YES = 1, NO = 0;
+final static int width = 400;
+final static int height = 250;
+int message = -1;
+JButton Yes,No;
+static JTextArea area = new JTextArea(2,10);
+
+public DialogForClient(JFrame frame,String string) {
+
+    super(frame,string,true);
+
+    setLayout(new BorderLayout());
+    //SOUTH
+    JPanel pl_south = new JPanel();
+    Yes = new JButton("确认");
+    Yes.addActionListener(this);
+    No = new JButton("取消");
+    No.addActionListener(this);
+    pl_south.add(Yes);
+    pl_south.add(No);
+    add(pl_south,BorderLayout.SOUTH);
+    //CENTER
+    JScrollPane pl_center = new JScrollPane(area);  
+    area.setLineWrap(true);//字满自动换行
+    area.setWrapStyleWord(true);//换行不断字
+    area.setEditable(false);
+    area.setOpaque(false);
+    add(pl_center,BorderLayout.CENTER);
+    //设置dialog大小以及位置
+    setSize(width, height);
+    SwingUtils.popDialogInCenterOfScreen(this);
+    addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent e) {
+            message = -1;
+            setVisible(false);
+        }
+    });
+}
+//设置按钮事件
+public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == Yes) {
+        message = YES;
+        setVisible(false);
+    }
+    else if(e.getSource() == No) {
+        message = NO;
+        setVisible(false);
+    }
+}
+//获取按钮标识
+public int getMessage() {
+    return message;
+}
+//设置要提示的信息
+public void setInf(String s) {
+    area.setText(s);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>{% endcodeblock %}</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Pat乙级 | DeepIceCream]]></title>
   <link href="http://czczup.github.io/blog/categories/patyi-ji/atom.xml" rel="self"/>
   <link href="http://czczup.github.io/"/>
-  <updated>2018-02-14T14:31:37+08:00</updated>
+  <updated>2018-02-14T15:09:47+08:00</updated>
   <id>http://czczup.github.io/</id>
   <author>
     <name><![CDATA[nonoka]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[1016. 部分A+B (15)]]></title>
+    <link href="http://czczup.github.io/blog/20170212/pat-basic-level-1016/"/>
+    <updated>2017-02-12T21:35:28+08:00</updated>
+    <id>http://czczup.github.io/blog/20170212/pat-basic-level-1016</id>
+    <content type="html"><![CDATA[<p>&#160; &#160; &#160; &#160;正整数A的“D<sub>A</sub>（为1位整数）部分”定义为由A中所有D<sub>A</sub>组成的新整数P<sub>A</sub>。例如：给定A = 3862767，D<sub>A</sub> = 6，则A的“6部分”P<sub>A</sub>是66，因为A中有2个6。</p>
+
+<!--more-->
+
+
+<p>&#160; &#160; &#160; &#160;现给定A、D<sub>A</sub>、B、D<sub>B</sub>，请编写程序计算P<sub>A</sub> + P<sub>B</sub>。</p>
+
+<pre><code>输入格式：
+输入在一行中依次给出A、DA、B、DB，中间以空格分隔，其中0 &lt; A, B &lt; 1010。
+
+输出格式：
+在一行中输出PA + PB的值。
+
+输入样例1：
+3862767 6 13530293 3
+
+输出样例1：
+399
+
+输入样例2：
+3862767 1 13530293 8
+
+输出样例2：
+0
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li>初始化P<sub>A</sub>、P<sub>A</sub>为"0"。</li>
+<li>在A、B字符串中寻找D<sub>A</sub>、D<sub>B</sub>。</li>
+<li>将D<sub>A</sub>、D<sub>B</sub>分别累加到P<sub>A</sub>、P<sub>A</sub>上。</li>
+</ol>
+
+
+<hr />
+
+<p><figure class='code'><figcaption><span>Python语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="n">A</span><span class="p">,</span><span class="n">DA</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">DB</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
+</span><span class='line'><span class="n">PA</span><span class="p">,</span><span class="n">PB</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">cnt1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">cnt1</span><span class="p">]</span> <span class="o">==</span> <span class="n">DA</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">PA</span> <span class="o">=</span> <span class="n">PA</span> <span class="o">+</span> <span class="n">DA</span>
+</span><span class='line'><span class="k">for</span> <span class="n">cnt2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">)):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">B</span><span class="p">[</span><span class="n">cnt2</span><span class="p">]</span> <span class="o">==</span> <span class="n">DB</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">PB</span> <span class="o">=</span> <span class="n">PB</span> <span class="o">+</span> <span class="n">DB</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">PA</span><span class="p">)</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">PB</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><img src="/images/patb/1016.png"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[1003. 我要通过！(20)]]></title>
@@ -208,6 +277,98 @@ NO
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[1011. A+B和C (15)]]></title>
+    <link href="http://czczup.github.io/blog/20161123/pat-basic-level-1011/"/>
+    <updated>2016-11-23T17:50:10+08:00</updated>
+    <id>http://czczup.github.io/blog/20161123/pat-basic-level-1011</id>
+    <content type="html"><![CDATA[<p>&#160; &#160; &#160; &#160;给定区间[-2<sup>31</sup>, 2<sup>31</sup>]内的3个整数A、B和C，请判断A+B是否大于C。</p>
+
+<!--more-->
+
+
+<pre><code>输入格式：
+输入第1行给出正整数T(&lt;=10)，是测试用例的个数。随后给出T组测试用例，每组占一行，顺序给出A、B和C。整数间以空格分隔。
+
+输出格式：
+对每组测试用例，在一行中输出“Case #X: true”如果A+B&gt;C，否则输出“Case #X: false”，其中X是测试用例的编号（从1开始）。
+
+输入样例：
+4
+1 2 3
+2 3 4
+2147483647 0 2147483646
+0 -2147483648 -2147483647
+
+输出样例：
+Case #1: false
+Case #2: true
+Case #3: true
+Case #4: false
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li>两个int型变量相加，最后的值可能会超过int的范围，因此在本题中应使用long long作为变量类型。</li>
+</ol>
+
+
+<hr />
+
+<p><figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="n">d</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">n</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">long</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">cnt</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">n</span><span class="p">;</span><span class="n">cnt</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="n">lld</span> <span class="o">%</span><span class="n">lld</span> <span class="o">%</span><span class="n">lld</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">a</span><span class="p">[</span><span class="n">cnt</span><span class="p">],</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">b</span><span class="p">[</span><span class="n">cnt</span><span class="p">],</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">c</span><span class="p">[</span><span class="n">cnt</span><span class="p">]);</span>
+</span><span class='line'>        <span class="n">d</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">cnt</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">cnt</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">n</span><span class="p">;</span><span class="n">cnt</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">[</span><span class="n">cnt</span><span class="p">]){</span>
+</span><span class='line'>            <span class="n">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Case</span> <span class="err">#</span><span class="o">%</span><span class="nl">d</span><span class="p">:</span> <span class="nb">true</span><span class="err">\</span><span class="n">n</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">{</span>
+</span><span class='line'>            <span class="n">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Case</span> <span class="err">#</span><span class="o">%</span><span class="nl">d</span><span class="p">:</span> <span class="nb">false</span><span class="err">\</span><span class="n">n</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><img src="/images/patb/1011.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[1002. 写出这个数 (20)]]></title>
     <link href="http://czczup.github.io/blog/20161015/pat-basic-level-1002/"/>
     <updated>2016-10-15T17:53:20+08:00</updated>
@@ -233,9 +394,9 @@ yi san wu
 <h3>思路</h3>
 
 <ol>
-<li>n小于10<sup>100</sup>，输入自然数最多有101位</li>
-<li>101个数字相加，最大为909，只有3位</li>
-<li>switch-case输出拼音</li>
+<li>n小于10<sup>100</sup>，输入自然数最多有101位。</li>
+<li>101个数字相加，最大为909，只有3位。</li>
+<li>switch-case输出拼音。</li>
 </ol>
 
 

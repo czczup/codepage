@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://czczup.github.io/blog/2018/02/13/hello-octopress/</loc>
-<lastmod>2018-02-13T09:42:59+08:00</lastmod>
+<loc>http://czczup.github.io/blog/20161012/pat-basic-level-1001/</loc>
+<lastmod>2016-10-12T22:54:54+08:00</lastmod>
 </url>
 <url>
 <loc>http://czczup.github.io/blog/archives/</loc>
@@ -11,6 +11,6 @@
 <loc>http://czczup.github.io/</loc>
 </url>
 <url>
-<loc>http://czczup.github.io/blog/categories/new/</loc>
+<loc>http://czczup.github.io/blog/categories/patyi-ji/</loc>
 </url>
 </urlset>

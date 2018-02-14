@@ -4,7 +4,7 @@
   <title><![CDATA[DeepIceCream]]></title>
   <link href="http://czczup.github.io/atom.xml" rel="self"/>
   <link href="http://czczup.github.io/"/>
-  <updated>2018-02-14T20:11:06+08:00</updated>
+  <updated>2018-02-14T20:40:34+08:00</updated>
   <id>http://czczup.github.io/</id>
   <author>
     <name><![CDATA[nonoka]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[1046. 划拳 (15)]]></title>
+    <link href="http://czczup.github.io/blog/20170405/pat-basic-level-1046/"/>
+    <updated>2017-04-05T10:54:26+08:00</updated>
+    <id>http://czczup.github.io/blog/20170405/pat-basic-level-1046</id>
+    <content type="html"><![CDATA[<p>&#160; &#160; &#160; &#160;划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。</p>
+
+<!--more-->
+
+
+<p>&#160; &#160; &#160; &#160;下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。</p>
+
+<pre><code>输入格式：
+输入第一行先给出一个正整数N（&lt;=100），随后N行，每行给出一轮划拳的记录，格式为：
+甲喊 甲划 乙喊 乙划
+其中“喊”是喊出的数字，“划”是划出的数字，均为不超过100的正整数（两只手一起划）。
+
+输出格式：
+在一行中先后输出甲、乙两人喝酒的杯数，其间以一个空格分隔。
+
+输入样例：
+5
+8 10 9 12
+5 10 5 10
+3 8 5 12
+12 18 1 13
+4 16 12 15
+
+输出样例：
+1 2
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li></li>
+</ol>
+
+
+<hr />
+
+<figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">fst1</span><span class="p">,</span><span class="n">fst2</span><span class="p">,</span><span class="n">sec1</span><span class="p">,</span><span class="n">sec2</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">N</span><span class="p">,</span><span class="n">drink1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">drink2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fst1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fst2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">sec1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">sec2</span><span class="p">);</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">fst1</span> <span class="o">+</span> <span class="n">sec1</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">fst2</span><span class="o">==</span><span class="n">sum</span> <span class="o">&amp;&amp;</span> <span class="n">sec2</span><span class="o">!=</span><span class="n">sum</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">drink2</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">sec2</span><span class="o">==</span><span class="n">sum</span> <span class="o">&amp;&amp;</span> <span class="n">fst2</span><span class="o">!=</span><span class="n">sum</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">drink1</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span><span class="n">drink1</span><span class="p">,</span><span class="n">drink2</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="http://czczup.github.io/images/patb/1026.png"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[1026. 程序运行时间 (15)]]></title>
@@ -41,6 +124,12 @@
 <hr />
 
 <h3>思路</h3>
+
+<ol>
+<li>计算时间差并四舍五入。</li>
+<li>转换为“hh:mm:ss”格式输出。</li>
+</ol>
+
 
 <hr />
 

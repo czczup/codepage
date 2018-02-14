@@ -162,18 +162,18 @@
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
 </span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">n</span><span class="o">!=</span><span class="mi">1</span><span class="p">;</span><span class="n">cnt</span><span class="o">++</span><span class="p">){</span>
-</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
-</span><span class='line'>            <span class="n">n</span><span class="o">/=</span><span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span><span class="c1">//如果n为偶数，把n砍掉一半 </span>
-</span><span class='line'>        <span class="k">else</span><span class="p">{</span>
-</span><span class='line'>            <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>            <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span><span class="c1">//如果n为奇数，把3n+1砍掉一半 </span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">n</span><span class="o">!=</span><span class="mi">1</span><span class="p">;</span><span class="n">cnt</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span> <span class="c1">//如果n为偶数，把n砍掉一半</span>
+</span><span class='line'>            <span class="n">n</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">{</span>       <span class="c1">//如果n为奇数，把3n+1砍掉一半</span>
+</span><span class='line'>            <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">cnt</span><span class="p">);</span> 
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">cnt</span><span class="p">);</span>
 </span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -181,7 +181,7 @@
 
 <p></p>
 
-<p><img src="/images/pata/1001.png"></p>
+<p><img src="/images/patb/1001.png"></p>
 </div>
 
 
@@ -228,6 +228,13 @@
 
         
         
+          <ul class="meta text-muted pager">
+            
+            
+            <li class="next"><a href="/blog/20161015/pat-basic-level-1002/" title="Next Post: 1002. 写出这个数 (20)">1002. 写出这个数 (20) &raquo;</a></li>
+            
+          </ul>
+        
       </footer>
     </article>
     
@@ -242,6 +249,10 @@
   </div>
   
   <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="/blog/20170204/pat-basic-level-1003/">1003. 我要通过！(20)</a>
+    
+    <a class="list-group-item " href="/blog/20161015/pat-basic-level-1002/">1002. 写出这个数 (20)</a>
     
     <a class="list-group-item active" href="/blog/20161012/pat-basic-level-1001/">1001. 害死人不偿命的(3n+1)猜想 (15)</a>
     

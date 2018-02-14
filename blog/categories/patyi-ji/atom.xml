@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Pat乙级 | DeepIceCream]]></title>
   <link href="http://czczup.github.io/blog/categories/patyi-ji/atom.xml" rel="self"/>
   <link href="http://czczup.github.io/"/>
-  <updated>2018-02-14T13:21:24+08:00</updated>
+  <updated>2018-02-14T13:34:22+08:00</updated>
   <id>http://czczup.github.io/</id>
   <author>
     <name><![CDATA[nonoka]]></name>
@@ -36,7 +36,10 @@
 5
 </code></pre>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<hr />
+
+<p><figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -75,6 +78,8 @@
 </span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></p>
+
+<p><img src="/images/pata/1001.png"></p>
 ]]></content>
   </entry>
   

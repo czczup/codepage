@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>1046. 划拳 (15) - DeepIceCream</title>
+  <title>1017. A除以B (20) - DeepIceCream</title>
   <meta name="author" content="nonoka">
 
   
@@ -14,15 +14,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://czczup.github.io/blog/20170405/pat-basic-level-1046/">
+  <link rel="canonical" href="http://czczup.github.io/blog/20170218/pat-basic-level-1017/">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="DeepIceCream" type="application/atom+xml">
 
   <!-- http://opengraphprotocol.org/ -->
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://czczup.github.io/blog/20170405/pat-basic-level-1046/">
-  <meta property="og:title" content="1046. 划拳 (15) - DeepIceCream">
+  <meta property="og:url" content="http://czczup.github.io/blog/20170218/pat-basic-level-1017/">
+  <meta property="og:title" content="1017. A除以B (20) - DeepIceCream">
   
 
   <script src="/javascripts/libs/jquery/jquery-2.1.3.min.js"></script>
@@ -110,44 +110,35 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-04-05T10:54:26+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-04-05(Wed)</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-02-18T16:16:05+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-02-18(Sat)</time>
         
       </p>
     
     
     <h1 class="entry-title" itemprop="name headline">
-        1046. 划拳 (15)
+        1017. A除以B (20)
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。</p>
+<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;本题要求计算A/B，其中A是不超过1000位的正整数，B是1位正整数。你需要输出商数Q和余数R，使得A = B * Q + R成立。</p>
 
 <!--more-->
 
 
-<p>&#160; &#160; &#160; &#160;下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。</p>
-
 <pre><code>输入格式：
-输入第一行先给出一个正整数N（&lt;=100），随后N行，每行给出一轮划拳的记录，格式为：
-甲喊 甲划 乙喊 乙划
-其中“喊”是喊出的数字，“划”是划出的数字，均为不超过100的正整数（两只手一起划）。
+输入在1行中依次给出A和B，中间以1空格分隔。
 
 输出格式：
-在一行中先后输出甲、乙两人喝酒的杯数，其间以一个空格分隔。
+在1行中依次输出Q和R，中间以1空格分隔。
 
 输入样例：
-5
-8 10 9 12
-5 10 5 10
-3 8 5 12
-12 18 1 13
-4 16 12 15
+123456789050987654321 7
 
 输出样例：
-1 2
+17636684150141093474 3
 </code></pre>
 
 <hr />
@@ -155,50 +146,23 @@
 <h3>思路</h3>
 
 <ol>
-<li><p>用<code>drink1</code>、<code>drink2</code>分别记录甲和乙喝酒的杯数。</p></li>
-<li><p>将两人划的数字分别与喊的数字之和比较，若相等则杯数+1。</p></li>
+<li>本来是考的大整数处理的，用Python偷了个懒，简直是开挂。</li>
 </ol>
 
 
 <hr />
 
-<figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<figure class='code'><figcaption><span>Python语言实现 </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">fst1</span><span class="p">,</span><span class="n">fst2</span><span class="p">,</span><span class="n">sec1</span><span class="p">,</span><span class="n">sec2</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">N</span><span class="p">,</span><span class="n">drink1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">drink2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fst1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fst2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">sec1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">sec2</span><span class="p">);</span>
-</span><span class='line'>        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">fst1</span> <span class="o">+</span> <span class="n">sec1</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">fst2</span><span class="o">==</span><span class="n">sum</span> <span class="o">&amp;&amp;</span> <span class="n">sec2</span><span class="o">!=</span><span class="n">sum</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">drink2</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">sec2</span><span class="o">==</span><span class="n">sum</span> <span class="o">&amp;&amp;</span> <span class="n">fst2</span><span class="o">!=</span><span class="n">sum</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">drink1</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span><span class="n">drink1</span><span class="p">,</span><span class="n">drink2</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p></p>
 
-<p><img src="/images/patb/1046.png"></p>
+<p><img src="/images/patb/1017.png"></p>
 </div>
 
 
@@ -222,7 +186,7 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-04-05T10:54:26+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-04-05(Wed)</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-02-18T16:16:05+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-02-18(Sat)</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
@@ -237,7 +201,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://czczup.github.io/blog/20170405/pat-basic-level-1046/" data-via="" data-counturl="http://czczup.github.io/blog/20170405/pat-basic-level-1046/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://czczup.github.io/blog/20170218/pat-basic-level-1017/" data-via="" data-counturl="http://czczup.github.io/blog/20170218/pat-basic-level-1017/" >Tweet</a>
   
   
   
@@ -247,10 +211,10 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/20170226/pat-basic-level-1026/" title="Previous Post: 1026. 程序运行时间 (15)">&laquo; 1026. 程序运行时间 (15)</a></li>
+            <li class="previous"><a href="/blog/20170214/pat-basic-level-1019/" title="Previous Post: 1019. 数字黑洞 (20)">&laquo; 1019. 数字黑洞 (20)</a></li>
             
             
-            <li class="next"><a href="/blog/20170410/pat-basic-level-1015/" title="Next Post: 1015. 德才论 (25)">1015. 德才论 (25) &raquo;</a></li>
+            <li class="next"><a href="/blog/20170226/pat-basic-level-1026/" title="Next Post: 1026. 程序运行时间 (15)">1026. 程序运行时间 (15) &raquo;</a></li>
             
           </ul>
         
@@ -273,11 +237,11 @@
     
     <a class="list-group-item " href="/blog/20170410/pat-basic-level-1015/">1015. 德才论 (25)</a>
     
-    <a class="list-group-item active" href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
+    <a class="list-group-item " href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
     
     <a class="list-group-item " href="/blog/20170226/pat-basic-level-1026/">1026. 程序运行时间 (15)</a>
     
-    <a class="list-group-item " href="/blog/20170218/pat-basic-level-1017/">1017. A除以B (20)</a>
+    <a class="list-group-item active" href="/blog/20170218/pat-basic-level-1017/">1017. A除以B (20)</a>
     
   </div>
 </section>

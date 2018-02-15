@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>1034. 有理数四则运算(20) - DeepIceCream</title>
+  <meta name="author" content="nonoka">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://czczup.github.io/blog/20180213/pat-basic-level-1034/">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="DeepIceCream" type="application/atom+xml">
+
+  <!-- http://opengraphprotocol.org/ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://czczup.github.io/blog/20180213/pat-basic-level-1034/">
+  <meta property="og:title" content="1034. 有理数四则运算(20) - DeepIceCream">
+  
+
+  <script src="/javascripts/libs/jquery/jquery-2.1.3.min.js"></script>
+
+<link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+
+
+  
+  <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+  <body   >
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" title="toggle navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">DeepIceCream</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a rel="index" href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="navbar-form navbar-right" action="https://www.baidu.com/search" method="GET">
+                    <input type="hidden" name="sitesearch" value="czczup.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" role="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9" itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="name" content="DeepIceCream" />
+    
+    <meta itemprop="url" content="http://czczup.github.io" />
+    <article class="hentry" role="article" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2018-02-13T22:44:16+08:00"  data-updated="true" itemprop="datePublished dateCreated">2018-02-13(Tue)</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title" itemprop="name headline">
+        1034. 有理数四则运算(20)
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;本题要求编写程序，计算2个有理数的和、差、积、商。</p>
+
+<!--more-->
+
+
+<pre><code>输入格式：
+输入在一行中按照“a1/b1 a2/b2”的格式给出两个分数形式的有理数，其中分子和分母全是整型范围内的整数，负号只可能出现在分子前，分母不为0。
+
+输出格式：
+分别在4行中按照“有理数1 运算符 有理数2 = 结果”的格式顺序输出2个有理数的和、差、积、商。注意输出的每个有理数必须是该有理数的最简形式“k a/b”，其中k是整数部分，a/b是最简分数部分；若为负数，则须加括号；若除法分母为0，则输出“Inf”。题目保证正确的输出中没有超过整型范围的整数。
+
+输入样例1：
+2/3 -4/2
+
+输出样例1：
+2/3 + (-2) = (-1 1/3)
+2/3 - (-2) = 2 2/3
+2/3 * (-2) = (-1 1/3)
+2/3 / (-2) = (-1/3)
+
+输入样例2：
+5/3 0/6
+
+输出样例2：
+1 2/3 + 0 = 1 2/3
+1 2/3 - 0 = 1 2/3
+1 2/3 * 0 = 0
+1 2/3 / 0 = Inf
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li><p>推导分数加法公式：$ \frac{symbol_1\times{a}}{b} + \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{ad} + symbol_2\times{bc}}{bd} $。</p></li>
+<li><p>推导分数减法公式：$ \frac{symbol_1\times{a}}{b} - \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{ad} - symbol_2\times{bc}}{bd} $。</p></li>
+<li><p>推导分数乘法公式：$ \frac{symbol_1\times{a}}{b} \times  \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{symbol_2}\times{ac}}{bd} $。</p></li>
+<li><p>推导分数除法公式：$ \frac{symbol_1\times{a}}{b} \div  \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{symbol_2}\times{ad}}{bc} $。</p></li>
+<li><p>读入数据，若<code>numerator</code>或<code>denominator</code>小于0，则<code>symbol</code>初始化为<code>"-"</code>,否则初始化为<code>""</code>；</p></li>
+<li>用辗转相除法求最大公约数<code>maxnum</code>。</li>
+<li>根据上述公式实现<code>add(num)</code>、<code>sub(num)</code>、<code>mul(num)</code>、<code>div(num)</code>方法。</li>
+<li>实现<code>simplify()</code>分数化简方法，在加减乘除运算之后进行分数化简。
+
+<ul>
+<li>首先，计算分数的整数部分：<code>integer = numerator // denominator</code>；</li>
+<li>然后，更新分数的分子：<code>numerator -= integer * denominator</code>；</li>
+<li>接着，更新分数的分子：<code>numerator = numerator // maxnum</code>；</li>
+<li>之后，更新分数的分母：<code>denominator = denominator // maxnum</code>；</li>
+<li>最后，根据整数、分子、分母三部分是否为0生成字符串<code>value</code>。</li>
+</ul>
+</li>
+<li>输出化简后的分数，若为负数则在数字两端额外输出括号。</li>
+</ol>
+
+
+<hr />
+
+<figure class='code'><figcaption><span>Python语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="k">class</span> <span class="nc">number</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="s">&quot;-&quot;</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">%</span><span class="n">a</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">a</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">b</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;Inf&quot;</span>
+</span><span class='line'>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;0&quot;</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">maxnum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">denominator</span><span class="p">)</span> <span class="c"># 最大公约数</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">integer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integer</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">//</span> <span class="n">maxnum</span>
+</span><span class='line'>            <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">//</span> <span class="n">maxnum</span>
+</span><span class='line'>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">integer</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">integer</span><span class="p">)</span>
+</span><span class='line'>                <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">denominator</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">integer</span><span class="p">)</span>
+</span><span class='line'>                <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">integer</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">denominator</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">numerator</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span> <span class="o">*</span> <span class="n">num</span><span class="o">.</span><span class="n">denominator</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>        <span class="n">denominator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">*</span> <span class="n">num</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">number</span><span class="p">([</span><span class="n">numerator</span><span class="p">,</span><span class="n">denominator</span><span class="p">])</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">numerator</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span> <span class="o">*</span> <span class="n">num</span><span class="o">.</span><span class="n">denominator</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>        <span class="n">denominator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">*</span> <span class="n">num</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">number</span><span class="p">([</span><span class="n">numerator</span><span class="p">,</span><span class="n">denominator</span><span class="p">])</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">numerator</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">denominator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">*</span> <span class="n">num</span><span class="o">.</span><span class="n">denominator</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">number</span><span class="p">([</span><span class="n">numerator</span><span class="p">,</span><span class="n">denominator</span><span class="p">])</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">div</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">numerator</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="p">))</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="o">.</span><span class="n">denominator</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">denominator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">*</span> <span class="n">num</span><span class="o">.</span><span class="n">numerator</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">number</span><span class="p">([</span><span class="n">numerator</span><span class="p">,</span><span class="n">denominator</span><span class="p">])</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">==</span> <span class="s">&quot;-&quot;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="s">&quot;(&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">input_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)]</span>
+</span><span class='line'><span class="n">num1</span> <span class="o">=</span> <span class="n">number</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</span><span class='line'><span class="n">num2</span> <span class="o">=</span> <span class="n">number</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_num</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+</span><span class='line'><span class="n">num_add</span> <span class="o">=</span> <span class="n">num1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+</span><span class='line'><span class="n">num_sub</span> <span class="o">=</span> <span class="n">num1</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+</span><span class='line'><span class="n">num_mul</span> <span class="o">=</span> <span class="n">num1</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+</span><span class='line'><span class="n">num_div</span> <span class="o">=</span> <span class="n">num1</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">num2</span><span class="p">)</span>
+</span><span class='line'><span class="p">[</span><span class="n">num</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="n">num1</span><span class="p">,</span><span class="n">num2</span><span class="p">,</span><span class="n">num_add</span><span class="p">,</span><span class="n">num_sub</span><span class="p">,</span><span class="n">num_mul</span><span class="p">,</span><span class="n">num_div</span><span class="p">]]</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="s">&quot;+&quot;</span><span class="p">,</span><span class="n">num2</span><span class="p">,</span><span class="s">&quot;=&quot;</span><span class="p">,</span><span class="n">num_add</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="s">&quot;-&quot;</span><span class="p">,</span><span class="n">num2</span><span class="p">,</span><span class="s">&quot;=&quot;</span><span class="p">,</span><span class="n">num_sub</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="n">num2</span><span class="p">,</span><span class="s">&quot;=&quot;</span><span class="p">,</span><span class="n">num_mul</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">num2</span><span class="p">,</span><span class="s">&quot;=&quot;</span><span class="p">,</span><span class="n">num_div</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="/images/patb/1034.png"></p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by <span class="fn" itemprop="name">nonoka</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2018-02-13T22:44:16+08:00"  data-updated="true" itemprop="datePublished dateCreated">2018-02-13(Tue)</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/patyi-ji/'>pat乙级</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://czczup.github.io/blog/20180213/pat-basic-level-1034/" data-via="" data-counturl="http://czczup.github.io/blog/20180213/pat-basic-level-1034/" >Tweet</a>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/20170405/pat-basic-level-1046/" title="Previous Post: 1046. 划拳 (15)">&laquo; 1046. 划拳 (15)</a></li>
+            
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item active" href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算(20)</a>
+    
+    <a class="list-group-item " href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
+    
+    <a class="list-group-item " href="/blog/20170226/pat-basic-level-1026/">1026. 程序运行时间 (15)</a>
+    
+    <a class="list-group-item " href="/blog/20170213/pat-basic-level-1018%20-%20%E5%89%AF%E6%9C%AC/">1018. 锤子剪刀布 (20)</a>
+    
+    <a class="list-group-item " href="/blog/20170213/pat-basic-level-1018/">1018. 锤子剪刀布 (20)</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2018 - nonoka<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+<!-- MathJax -->  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       inlineMath: [ ['$','$'], ["\\(","\\)"] ],  
+                       processEscapes: true  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Queue(function() {  
+                      var all = MathJax.Hub.getAllJax(), i;  
+                      for(i=0; i < all.length; i += 1) {  
+                      all[i].SourceElement().parentNode.className += ' has-jax';  
+                      }  
+                      });  
+    </script>  
+  
+<script type="text/javascript"  
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">  
+    </script> 
+</div>
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr.js"></script>
+
+
+  </body>
+</html>

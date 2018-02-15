@@ -162,20 +162,11 @@
 <li><p>推导分数减法公式：$ \frac{symbol_1\times{a}}{b} - \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{ad} - symbol_2\times{bc}}{bd} $。</p></li>
 <li><p>推导分数乘法公式：$ \frac{symbol_1\times{a}}{b} \times  \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{symbol_2}\times{ac}}{bd} $。</p></li>
 <li><p>推导分数除法公式：$ \frac{symbol_1\times{a}}{b} \div  \frac{symbol_2\times{c}}{d} = \frac{symbol_1\times{symbol_2}\times{ad}}{bc} $。</p></li>
-<li><p>读入数据，若<code>numerator</code>或<code>denominator</code>小于0，则<code>symbol</code>初始化为<code>"-"</code>,否则初始化为<code>""</code>；</p></li>
-<li>用辗转相除法求最大公约数<code>maxnum</code>。</li>
-<li>根据上述公式实现<code>add(num)</code>、<code>sub(num)</code>、<code>mul(num)</code>、<code>div(num)</code>方法。</li>
-<li>实现<code>simplify()</code>分数化简方法，在加减乘除运算之后进行分数化简。
-
-<ul>
-<li>首先，计算分数的整数部分：<code>integer = numerator // denominator</code>；</li>
-<li>然后，更新分数的分子：<code>numerator -= integer * denominator</code>；</li>
-<li>接着，更新分数的分子：<code>numerator = numerator // maxnum</code>；</li>
-<li>之后，更新分数的分母：<code>denominator = denominator // maxnum</code>；</li>
-<li>最后，根据整数、分子、分母三部分是否为0生成字符串<code>value</code>。</li>
-</ul>
-</li>
-<li>输出化简后的分数，若为负数则在数字两端额外输出括号。</li>
+<li><p>读入数据，若<code>numerator</code>或<code>denominator</code>小于0，则<code>symbol</code>初始化为<code>"-"</code>,否则初始化为<code>""</code>。</p></li>
+<li><p>用辗转相除法求最大公约数<code>maxnum</code>。</p></li>
+<li><p>根据上述公式实现<code>add(num)</code>、<code>sub(num)</code>、<code>mul(num)</code>、<code>div(num)</code>方法。</p></li>
+<li><p>实现<code>simplify()</code>分数化简方法，在加减乘除运算之后进行分数化简。首先，计算分数的整数部分：<code>integer = numerator // denominator</code>；然后，更新分数的分子：<code>numerator -= integer * denominator</code>；接着，更新分数的分子：<code>numerator = numerator // maxnum</code>；之后，更新分数的分母：<code>denominator = denominator // maxnum</code>；最后，根据整数、分子、分母三部分是否为0生成字符串<code>value</code>。</p></li>
+<li><p>输出化简后的分数，若为负数则在数字两端额外输出括号。</p></li>
 </ol>
 
 
@@ -380,7 +371,7 @@
         
           <ul class="meta text-muted pager">
             
-            <li class="previous"><a href="/blog/20170405/pat-basic-level-1046/" title="Previous Post: 1046. 划拳 (15)">&laquo; 1046. 划拳 (15)</a></li>
+            <li class="previous"><a href="/blog/20170410/pat-basic-level-1015/" title="Previous Post: 1015. 德才论 (25)">&laquo; 1015. 德才论 (25)</a></li>
             
             
           </ul>
@@ -402,13 +393,13 @@
     
     <a class="list-group-item active" href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算(20)</a>
     
+    <a class="list-group-item " href="/blog/20170410/pat-basic-level-1015/">1015. 德才论 (25)</a>
+    
     <a class="list-group-item " href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
     
     <a class="list-group-item " href="/blog/20170226/pat-basic-level-1026/">1026. 程序运行时间 (15)</a>
     
-    <a class="list-group-item " href="/blog/20170213/pat-basic-level-1018%20-%20%E5%89%AF%E6%9C%AC/">1018. 锤子剪刀布 (20)</a>
-    
-    <a class="list-group-item " href="/blog/20170213/pat-basic-level-1018/">1018. 锤子剪刀布 (20)</a>
+    <a class="list-group-item " href="/blog/20170214/pat-basic-level-1005/">1005. 继续(3n+1)猜想 (25)</a>
     
   </div>
 </section>

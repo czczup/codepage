@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>1004. 成绩排名 (20) - DeepIceCream</title>
+  <meta name="author" content="nonoka">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://czczup.github.io/blog/20161016/pat-basic-level-1004/">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="DeepIceCream" type="application/atom+xml">
+
+  <!-- http://opengraphprotocol.org/ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://czczup.github.io/blog/20161016/pat-basic-level-1004/">
+  <meta property="og:title" content="1004. 成绩排名 (20) - DeepIceCream">
+  
+
+  <script src="/javascripts/libs/jquery/jquery-2.1.3.min.js"></script>
+
+<link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+
+
+  
+  <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+  <body   >
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" title="toggle navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">DeepIceCream</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a rel="index" href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="navbar-form navbar-right" action="https://www.baidu.com/search" method="GET">
+                    <input type="hidden" name="sitesearch" value="czczup.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" role="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9" itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="name" content="DeepIceCream" />
+    
+    <meta itemprop="url" content="http://czczup.github.io" />
+    <article class="hentry" role="article" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2016-10-16T13:49:31+08:00"  data-updated="true" itemprop="datePublished dateCreated">2016-10-16(Sun)</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title" itemprop="name headline">
+        1004. 成绩排名 (20)
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;读入n名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。</p>
+
+<!--more-->
+
+
+<pre><code>输入格式：
+每个测试输入包含1个测试用例，格式为
+  第1行：正整数n
+  第2行：第1个学生的姓名 学号 成绩
+  第3行：第2个学生的姓名 学号 成绩
+  ... ... ...
+  第n+1行：第n个学生的姓名 学号 成绩
+其中姓名和学号均为不超过10个字符的字符串，成绩为0到100之间的一个整数，这里保证在一组测试用例中没有两个学生的成绩是相同的。
+
+输出格式：
+对每个测试用例输出2行，第1行是成绩最高学生的姓名和学号，第2行是成绩最低学生的姓名和学号，字符串间有1空格。
+
+输入样例：
+3
+Joe Math990112 89
+Mike CS991301 100
+Mary EE990830 95
+
+输出样例：
+Mike CS991301
+Joe Math990112
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li><p>用结构体存储学生的姓名、学号和成绩。</p></li>
+<li><p>将最高分初始化为0，最低分初始化为100，遍历学生列表，获得最高分和最低分。</p></li>
+<li><p>遍历学生列表，找到最高分和最低分对应的学生。</p></li>
+<li><p>按格式输出学生信息。</p></li>
+</ol>
+
+
+<hr />
+
+<figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt; </span>
+</span><span class='line'><span class="k">typedef</span> <span class="k">struct</span> <span class="n">student</span><span class="p">{</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="n">number</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">score</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="n">student</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">checkMax</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxScore</span><span class="p">,</span><span class="n">student</span> <span class="n">list</span><span class="p">[],</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span> <span class="c1">//查找获最高分的学生的下标 </span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">maxScore</span> <span class="o">==</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">checkMin</span><span class="p">(</span><span class="kt">int</span> <span class="n">minScore</span><span class="p">,</span><span class="n">student</span> <span class="n">list</span><span class="p">[],</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span> <span class="c1">//查找获最低分的学生的下标 </span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">minScore</span> <span class="o">==</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">student</span> <span class="n">list</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span> <span class="c1">//读入学生数据</span>
+</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s %s %d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span><span class="o">&amp;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">number</span><span class="p">,</span><span class="o">&amp;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">maxScore</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">minScore</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//最高分高于0，最低分低于100</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">maxScore</span> <span class="o">=</span> <span class="n">maxScore</span> <span class="o">&gt;=</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span> <span class="o">?</span> <span class="nl">maxScore</span> <span class="p">:</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">minScore</span> <span class="o">=</span> <span class="n">minScore</span> <span class="o">&lt;</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span> <span class="o">?</span> <span class="nl">minScore</span> <span class="p">:</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">score</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">student</span> <span class="n">topStu</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">checkMax</span><span class="p">(</span><span class="n">maxScore</span><span class="p">,</span><span class="n">list</span><span class="p">,</span><span class="n">n</span><span class="p">)];</span>
+</span><span class='line'>    <span class="n">student</span> <span class="n">midStu</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">checkMin</span><span class="p">(</span><span class="n">minScore</span><span class="p">,</span><span class="n">list</span><span class="p">,</span><span class="n">n</span><span class="p">)];</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">topStu</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">topStu</span><span class="p">.</span><span class="n">number</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">midStu</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">midStu</span><span class="p">.</span><span class="n">number</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="/images/patb/1004.png"></p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by <span class="fn" itemprop="name">nonoka</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2016-10-16T13:49:31+08:00"  data-updated="true" itemprop="datePublished dateCreated">2016-10-16(Sun)</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/patyi-ji/'>pat乙级</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://czczup.github.io/blog/20161016/pat-basic-level-1004/" data-via="" data-counturl="http://czczup.github.io/blog/20161016/pat-basic-level-1004/" >Tweet</a>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/20161015/pat-basic-level-1002/" title="Previous Post: 1002. 写出这个数 (20)">&laquo; 1002. 写出这个数 (20)</a></li>
+            
+            
+            <li class="next"><a href="/blog/20161021/pat-basic-level-1006/" title="Next Post: 1006. 换个格式输出整数 (15)">1006. 换个格式输出整数 (15) &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算(20)</a>
+    
+    <a class="list-group-item " href="/blog/20170410/pat-basic-level-1015/">1015. 德才论 (25)</a>
+    
+    <a class="list-group-item " href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
+    
+    <a class="list-group-item " href="/blog/20170226/pat-basic-level-1026/">1026. 程序运行时间 (15)</a>
+    
+    <a class="list-group-item " href="/blog/20170214/pat-basic-level-1005/">1005. 继续(3n+1)猜想 (25)</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2018 - nonoka<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+<!-- MathJax -->  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       inlineMath: [ ['$','$'], ["\\(","\\)"] ],  
+                       processEscapes: true  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Queue(function() {  
+                      var all = MathJax.Hub.getAllJax(), i;  
+                      for(i=0; i < all.length; i += 1) {  
+                      all[i].SourceElement().parentNode.className += ' has-jax';  
+                      }  
+                      });  
+    </script>  
+  
+<script type="text/javascript"  
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">  
+    </script> 
+</div>
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr.js"></script>
+
+
+  </body>
+</html>

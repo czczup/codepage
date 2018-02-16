@@ -154,6 +154,7 @@ Case #4: false
 
 <ol>
 <li>两个int型变量相加，最后的值可能会超过int的范围，因此在本题中应使用long long作为变量类型。</li>
+<li>用Python无需考虑范围。</li>
 </ol>
 
 
@@ -204,6 +205,22 @@ Case #4: false
 <p></p>
 
 <p><img src="/images/patb/1011.png"></p>
+
+<hr />
+
+<figure class='code'><figcaption><span>Python语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())):</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)]</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Case #</span><span class="si">%d</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;true&quot;</span> <span class="k">if</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">&gt;</span><span class="n">c</span> <span class="k">else</span> <span class="s">&quot;false&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="/images/patb/1011_2.png"></p>
 </div>
 
 
@@ -282,7 +299,7 @@ Case #4: false
     
     <a class="list-group-item " href="/blog/20170226/pat-basic-level-1026/">1026. 程序运行时间 (15)</a>
     
-    <a class="list-group-item " href="/blog/20170218/pat-basic-level-1017/">1017. A除以B (20)</a>
+    <a class="list-group-item " href="/blog/20170226/pat-basic-level-1025/">1025. 反转链表 (25)</a>
     
   </div>
 </section>

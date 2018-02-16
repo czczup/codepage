@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>1020. 月饼 (25) - DeepIceCream</title>
+  <meta name="author" content="nonoka">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://czczup.github.io/blog/20170216/pat-basic-level-1020/">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="DeepIceCream" type="application/atom+xml">
+
+  <!-- http://opengraphprotocol.org/ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://czczup.github.io/blog/20170216/pat-basic-level-1020/">
+  <meta property="og:title" content="1020. 月饼 (25) - DeepIceCream">
+  
+
+  <script src="/javascripts/libs/jquery/jquery-2.1.3.min.js"></script>
+
+<link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+
+
+  
+  <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+  <body   >
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" title="toggle navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">DeepIceCream</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a rel="index" href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="navbar-form navbar-right" action="https://www.baidu.com/search" method="GET">
+                    <input type="hidden" name="sitesearch" value="czczup.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" role="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9" itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="name" content="DeepIceCream" />
+    
+    <meta itemprop="url" content="http://czczup.github.io" />
+    <article class="hentry" role="article" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-02-16T22:27:41+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-02-16(Thu)</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title" itemprop="name headline">
+        1020. 月饼 (25)
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;月饼是中国人在中秋佳节时吃的一种传统食品，不同地区有许多不同风味的月饼。现给定所有种类月饼的库存量、总售价、以及市场的最大需求量，请你计算可以获得的最大收益是多少。</p>
+
+<!--more-->
+
+
+<p>&#160; &#160; &#160; &#160;注意：销售时允许取出一部分库存。样例给出的情形是这样的：假如我们有3种月饼，其库存量分别为18、15、10万吨，总售价分别为75、72、45亿元。如果市场的最大需求量只有20万吨，那么我们最大收益策略应该是卖出全部15万吨第2种月饼、以及5万吨第3种月饼，获得 72 + 45/2 = 94.5（亿元）。</p>
+
+<pre><code>输入格式：
+每个输入包含1个测试用例。每个测试用例先给出一个不超过1000的正整数N表示月饼的种类数、以及不超过500（以万吨为单位）的正整数D表示市场最大需求量。随后一行给出N个正数表示每种月饼的库存量（以万吨为单位）；最后一行给出N个正数表示每种月饼的总售价（以亿元为单位）。数字间以空格分隔。
+
+输出格式：
+对每组测试用例，在一行中输出最大收益，以亿元为单位并精确到小数点后2位。
+
+输入样例：
+3 20
+18 15 10
+75 72 45
+
+输出样例：
+94.50
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li><p>计算每种月饼的单价保存在<code>cost</code>中，然后取单价最高的月饼进行销售，若一种月饼即可满足市场的最大需求量，则<code>收益 = 市场需求量 * 最高月饼单价</code>。</p></li>
+<li><p>若一种月饼无法满足市场的最大需求量，则从未取过的月饼中选取单价最高的月饼进行销售。若加上其他月饼后，数量仍未达到市场的最大需求量，则重复本步骤，此时<code>收益 = 收益 + 该月饼总价值</code>；若加上其他月饼后，数量超过了市场的最大需求量，则只从该月饼中选取一部分，此时<code>收益 = 收益 + 该月饼总价值 - 超出市场需求部分价值</code>。</p></li>
+<li><p>一种月饼被销售后，从列表中移除。</p></li>
+</ol>
+
+
+<hr />
+
+<figure class='code'><figcaption><span>Python语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="n">N</span><span class="p">,</span><span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)]</span>
+</span><span class='line'><span class="n">cakeSum</span><span class="p">,</span> <span class="n">profit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="c">#月饼总量,总金额</span>
+</span><span class='line'><span class="c"># 用int(i)测试点2会报错</span>
+</span><span class='line'><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)]</span> <span class="c"># 月饼库存数量</span>
+</span><span class='line'><span class="n">money</span> <span class="o">=</span> <span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)]</span> <span class="c"># 月饼总售价</span>
+</span><span class='line'><span class="n">cost</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">cost</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">money</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="c">#月饼单位价</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">maxNum</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span> <span class="c"># 取最大值</span>
+</span><span class='line'>    <span class="n">maxIndex</span> <span class="o">=</span> <span class="n">cost</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">maxNum</span><span class="p">)</span> <span class="c"># 并记录对应索引</span>
+</span><span class='line'>    <span class="n">cakeSum</span> <span class="o">=</span> <span class="n">cakeSum</span> <span class="o">+</span> <span class="n">num</span><span class="p">[</span><span class="n">maxIndex</span><span class="p">]</span> <span class="c"># 计入月饼总量</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">cakeSum</span> <span class="o">&gt;</span> <span class="n">D</span><span class="p">:</span> <span class="c"># 一种就够</span>
+</span><span class='line'>        <span class="n">profit</span> <span class="o">=</span> <span class="n">D</span> <span class="o">*</span> <span class="n">cost</span><span class="p">[</span><span class="n">maxIndex</span><span class="p">]</span>
+</span><span class='line'>        <span class="k">break</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">cakeSum</span> <span class="o">&lt;</span> <span class="n">D</span><span class="p">:</span> <span class="c"># 取全部</span>
+</span><span class='line'>        <span class="n">profit</span> <span class="o">+=</span> <span class="n">money</span><span class="p">[</span><span class="n">maxIndex</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span> <span class="c"># 取一部分</span>
+</span><span class='line'>        <span class="n">profit</span> <span class="o">+=</span> <span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">maxIndex</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">cakeSum</span><span class="o">-</span><span class="n">D</span><span class="p">))</span> <span class="o">*</span> <span class="n">maxNum</span>
+</span><span class='line'>        <span class="n">cakeSum</span> <span class="o">=</span> <span class="n">D</span>
+</span><span class='line'>    <span class="n">num</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">maxIndex</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">money</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">maxIndex</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">cost</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">maxIndex</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">cakeSum</span> <span class="o">==</span> <span class="n">D</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">break</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.2f</span><span class="s">&quot;</span><span class="o">%</span><span class="n">profit</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="/images/patb/1020.png"></p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by <span class="fn" itemprop="name">nonoka</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-02-16T22:27:41+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-02-16(Thu)</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/patyi-ji/'>pat乙级</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://czczup.github.io/blog/20170216/pat-basic-level-1020/" data-via="" data-counturl="http://czczup.github.io/blog/20170216/pat-basic-level-1020/" >Tweet</a>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/20170214/pat-basic-level-1019/" title="Previous Post: 1019. 数字黑洞 (20)">&laquo; 1019. 数字黑洞 (20)</a></li>
+            
+            
+            <li class="next"><a href="/blog/20170217/pat-basic-level-1021/" title="Next Post: 1021. 个位数统计 (15)">1021. 个位数统计 (15) &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算(20)</a>
+    
+    <a class="list-group-item " href="/blog/20170410/pat-basic-level-1015/">1015. 德才论 (25)</a>
+    
+    <a class="list-group-item " href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
+    
+    <a class="list-group-item " href="/blog/20170226/pat-basic-level-1026/">1026. 程序运行时间 (15)</a>
+    
+    <a class="list-group-item " href="/blog/20170226/pat-basic-level-1025/">1025. 反转链表 (25)</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2018 - nonoka<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+<!-- MathJax -->  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       inlineMath: [ ['$','$'], ["\\(","\\)"] ],  
+                       processEscapes: true  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Queue(function() {  
+                      var all = MathJax.Hub.getAllJax(), i;  
+                      for(i=0; i < all.length; i += 1) {  
+                      all[i].SourceElement().parentNode.className += ' has-jax';  
+                      }  
+                      });  
+    </script>  
+  
+<script type="text/javascript"  
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">  
+    </script> 
+</div>
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr.js"></script>
+
+
+  </body>
+</html>

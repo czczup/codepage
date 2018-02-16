@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Pat乙级 | DeepIceCream]]></title>
   <link href="http://czczup.github.io/blog/categories/patyi-ji/atom.xml" rel="self"/>
   <link href="http://czczup.github.io/"/>
-  <updated>2018-02-15T23:39:43+08:00</updated>
+  <updated>2018-02-16T16:10:46+08:00</updated>
   <id>http://czczup.github.io/</id>
   <author>
     <name><![CDATA[nonoka]]></name>
@@ -580,47 +580,116 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[1017. A除以B (20)]]></title>
-    <link href="http://czczup.github.io/blog/20170218/pat-basic-level-1017/"/>
-    <updated>2017-02-18T16:16:05+08:00</updated>
-    <id>http://czczup.github.io/blog/20170218/pat-basic-level-1017</id>
-    <content type="html"><![CDATA[<p>&#160; &#160; &#160; &#160;本题要求计算A/B，其中A是不超过1000位的正整数，B是1位正整数。你需要输出商数Q和余数R，使得A = B * Q + R成立。</p>
+    <title type="html"><![CDATA[1025. 反转链表 (25)]]></title>
+    <link href="http://czczup.github.io/blog/20170226/pat-basic-level-1025/"/>
+    <updated>2017-02-26T10:27:36+08:00</updated>
+    <id>http://czczup.github.io/blog/20170226/pat-basic-level-1025</id>
+    <content type="html"><![CDATA[<p>&#160; &#160; &#160; &#160;给定一个常数K以及一个单链表L，请编写程序将L中每K个结点反转。例如：给定L为1→2→3→4→5→6，K为3，则输出应该为3→2→1→6→5→4；如果K为4，则输出应该为4→3→2→1→5→6，即最后不到K个元素不反转。</p>
 
 <!--more-->
 
 
 <pre><code>输入格式：
-输入在1行中依次给出A和B，中间以1空格分隔。
+每个输入包含1个测试用例。每个测试用例第1行给出第1个结点的地址、结点总个数正整数N(&lt;= 105)、以及正整数K(&lt;=N)，即要求反转的子链结点的个数。结点的地址是5位非负整数，NULL地址用-1表示。
+接下来有N行，每行格式为：
+Address Data Next
+其中Address是结点地址，Data是该结点保存的整数数据，Next是下一结点的地址。
 
 输出格式：
-在1行中依次输出Q和R，中间以1空格分隔。
+对每个测试用例，顺序输出反转后的链表，其上每个结点占一行，格式与输入相同。
 
 输入样例：
-123456789050987654321 7
+00100 6 4
+00000 4 99999
+00100 1 12309
+68237 6 -1
+33218 3 00000
+99999 5 68237
+12309 2 33218
 
 输出样例：
-17636684150141093474 3
+00000 4 33218
+33218 3 12309
+12309 2 00100
+00100 1 99999
+99999 5 68237
+68237 6 -1
 </code></pre>
 
 <hr />
 
-<h3>思路</h3>
-
-<ol>
-<li>本来是考的大整数处理的，用Python偷了个懒，简直是开挂。</li>
-</ol>
-
-
-<hr />
-
-<p><figure class='code'><figcaption><span>Python语言实现 </span></figcaption>
+<p><figure class='code'><figcaption><span>C语言实现 </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='Python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
-</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">first</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="n">d</span> <span class="o">%</span><span class="n">d</span> <span class="o">%</span><span class="n">d</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">first</span><span class="p">,</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">n</span><span class="p">,</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">k</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">next</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">list</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">final</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">address</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="n">d</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">address</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="n">d</span> <span class="o">%</span><span class="n">d</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">data</span><span class="p">[</span><span class="n">address</span><span class="p">],</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">next</span><span class="p">[</span><span class="n">address</span><span class="p">]);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">while</span><span class="p">(</span><span class="n">first</span><span class="o">!=-</span><span class="mi">1</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">list</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">first</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">first</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">cnt</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">final</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;(</span><span class="n">cnt</span><span class="o">-</span><span class="n">cnt</span><span class="o">%</span><span class="n">k</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">final</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[(</span><span class="n">i</span><span class="o">/</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="n">k</span><span class="o">-</span><span class="n">i</span><span class="o">%</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">cnt</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="mo">05</span><span class="n">d</span> <span class="o">%</span><span class="n">d</span> <span class="o">%</span><span class="mo">05</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="n">final</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="n">final</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">final</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">%</span><span class="mo">05</span><span class="n">d</span> <span class="o">%</span><span class="n">d</span> <span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span><span class="n">final</span><span class="p">[</span><span class="n">cnt</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="n">final</span><span class="p">[</span><span class="n">cnt</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p><img src="/images/patb/1017.png"></p>
+<p><img src="/images/patb/1025.png"></p>
 ]]></content>
   </entry>
   

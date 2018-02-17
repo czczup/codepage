@@ -145,6 +145,18 @@ APPAPT
 
 <hr />
 
+<h3>思路</h3>
+
+<ol>
+<li><p>对于每一个<code>'A'</code>，由它组成的<code>"PAT"</code>的个数等于其左侧的<code>'P'</code>的个数乘以其右侧的<code>'T'</code>的个数。</p></li>
+<li><p>用<code>T[100010]</code>记录<code>'A'</code>右侧的<code>'T'</code>的个数；用<code>P[100010]</code>记录<code>'A'</code>左侧的<code>'P'</code>的个数。</p></li>
+<li><p>对字符串中的所有<code>'A'</code>计算下式：$ sum = \sum_{i} {P[i] * T[i]} $</p></li>
+<li><p>没想到我自己想出来的方法居然和算法笔记的方法一模一样，好巧呀。</p></li>
+</ol>
+
+
+<hr />
+
 <figure class='code'><figcaption><span>C语言实现 </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -182,17 +194,17 @@ APPAPT
 </span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">lenstr</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">){</span>
 </span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;T&#39;</span><span class="p">)</span> <span class="c1">//A后找T </span>
 </span><span class='line'>            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>        <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">lenstr</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 </span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;P&#39;</span><span class="p">)</span> <span class="c1">//A前找P</span>
 </span><span class='line'>            <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>        <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="kt">long</span> <span class="kt">long</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//sum会超出int的取值范围 </span>
 </span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">lenstr</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 </span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="sc">&#39;A&#39;</span><span class="p">){</span> <span class="c1">//找A并计算 </span>
-</span><span class='line'>            <span class="n">sum</span> <span class="o">+=</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>            <span class="n">sum</span> <span class="o">+=</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">pat</span> <span class="o">=</span> <span class="n">sum</span><span class="o">%</span><span class="mi">1000000007</span><span class="p">;</span> <span class="c1">//求余数 </span>
@@ -255,7 +267,7 @@ APPAPT
             <li class="previous"><a href="/blog/20170328/pat-basic-level-1039/" title="Previous Post: 1039. 到底买不买 (20)">&laquo; 1039. 到底买不买 (20)</a></li>
             
             
-            <li class="next"><a href="/blog/20170405/pat-basic-level-1046/" title="Next Post: 1046. 划拳 (15)">1046. 划拳 (15) &raquo;</a></li>
+            <li class="next"><a href="/blog/20170330/pat-basic-level-1041/" title="Next Post: 1041. 考试座位号 (15)">1041. 考试座位号 (15) &raquo;</a></li>
             
           </ul>
         
@@ -276,13 +288,13 @@ APPAPT
     
     <a class="list-group-item " href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算 (20)</a>
     
+    <a class="list-group-item " href="/blog/20170501/pat-basic-level-1045/">1045. 快速排序 (25)</a>
+    
     <a class="list-group-item " href="/blog/20170411/pat-basic-level-1030/">1030. 完美数列 (25)</a>
     
     <a class="list-group-item " href="/blog/20170410/pat-basic-level-1028/">1028. 人口普查 (20)</a>
     
     <a class="list-group-item " href="/blog/20170410/pat-basic-level-1015/">1015. 德才论 (25)</a>
-    
-    <a class="list-group-item " href="/blog/20170405/pat-basic-level-1046/">1046. 划拳 (15)</a>
     
   </div>
 </section>

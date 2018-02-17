@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>1045. 快速排序 (25) - DeepIceCream</title>
+  <meta name="author" content="nonoka">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://czczup.github.io/blog/20170501/pat-basic-level-1045/">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="DeepIceCream" type="application/atom+xml">
+
+  <!-- http://opengraphprotocol.org/ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://czczup.github.io/blog/20170501/pat-basic-level-1045/">
+  <meta property="og:title" content="1045. 快速排序 (25) - DeepIceCream">
+  
+
+  <script src="/javascripts/libs/jquery/jquery-2.1.3.min.js"></script>
+
+<link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+
+
+  
+  <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+  <body   >
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" title="toggle navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">DeepIceCream</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a rel="index" href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="navbar-form navbar-right" action="https://www.baidu.com/search" method="GET">
+                    <input type="hidden" name="sitesearch" value="czczup.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" role="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9" itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="name" content="DeepIceCream" />
+    
+    <meta itemprop="url" content="http://czczup.github.io" />
+    <article class="hentry" role="article" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-05-01T22:24:32+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-05-01(Mon)</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title" itemprop="name headline">
+        1045. 快速排序 (25)
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;著名的快速排序算法里有一个经典的划分过程：我们通常采用某种方法取一个元素作为主元，通过交换，把比主元小的元素放到它的左边，比主元大的元素放到它的右边。 给定划分后的N个互不相同的正整数的排列，请问有多少个元素可能是划分前选取的主元？</p>
+
+<!--more-->
+
+
+<p>&#160; &#160; &#160; &#160;例如给定N = 5, 排列是<code>1、3、2、4、5</code>。则：</p>
+
+<ul>
+<li>1的左边没有元素，右边的元素都比它大，所以它可能是主元；</li>
+<li>尽管3的左边元素都比它小，但是它右边的2它小，所以它不能是主元；</li>
+<li>尽管2的右边元素都比它大，但其左边的3比它大，所以它不能是主元；</li>
+<li>类似原因，4和5都可能是主元。</li>
+</ul>
+
+
+<p>&#160; &#160; &#160; &#160;因此，有3个元素可能是主元。</p>
+
+<pre><code>输入格式：
+输入在第1行中给出一个正整数N（&lt;= 105）； 第2行是空格分隔的N个不同的正整数，每个数不超过109。
+
+输出格式：
+在第1行中输出有可能是主元的元素个数；在第2行中按递增顺序输出这些元素，其间以1个空格分隔，行末不得有多余空格。
+
+输入样例：
+5
+1 3 2 4 5
+
+输出样例：
+3
+1 4 5
+</code></pre>
+
+<hr />
+
+<figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;algorithm&gt;</span>
+</span><span class='line'><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">left</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="n">right</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="n">num</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span> <span class="c1">//从左往右判断</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">max</span><span class="p">){</span>
+</span><span class='line'>            <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">max</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">){</span> <span class="c1">//从右往左判断</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">min</span><span class="p">){</span>
+</span><span class='line'>            <span class="n">right</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">min</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">result</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span> <span class="c1">//搜索两个&#39;1&#39;</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">right</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">result</span><span class="p">[</span><span class="n">cnt</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">sort</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="n">result</span><span class="o">+</span><span class="n">cnt</span><span class="p">);</span> <span class="c1">//递增排序</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">cnt</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">cnt</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span class='line'>            <span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+</span><span class='line'>                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span class='line'>                <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>                <span class="n">printf</span><span class="p">(</span><span class="s">&quot; %d&quot;</span><span class="p">,</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="/images/patb/1045.png"></p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by <span class="fn" itemprop="name">nonoka</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-05-01T22:24:32+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-05-01(Mon)</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/patyi-ji/'>pat乙级</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://czczup.github.io/blog/20170501/pat-basic-level-1045/" data-via="" data-counturl="http://czczup.github.io/blog/20170501/pat-basic-level-1045/" >Tweet</a>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/20170411/pat-basic-level-1030/" title="Previous Post: 1030. 完美数列 (25)">&laquo; 1030. 完美数列 (25)</a></li>
+            
+            
+            <li class="next"><a href="/blog/20180213/pat-basic-level-1034/" title="Next Post: 1034. 有理数四则运算 (20)">1034. 有理数四则运算 (20) &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算 (20)</a>
+    
+    <a class="list-group-item active" href="/blog/20170501/pat-basic-level-1045/">1045. 快速排序 (25)</a>
+    
+    <a class="list-group-item " href="/blog/20170411/pat-basic-level-1030/">1030. 完美数列 (25)</a>
+    
+    <a class="list-group-item " href="/blog/20170410/pat-basic-level-1028/">1028. 人口普查 (20)</a>
+    
+    <a class="list-group-item " href="/blog/20170410/pat-basic-level-1015/">1015. 德才论 (25)</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2018 - nonoka<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+<!-- MathJax -->  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       inlineMath: [ ['$','$'], ["\\(","\\)"] ],  
+                       processEscapes: true  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Queue(function() {  
+                      var all = MathJax.Hub.getAllJax(), i;  
+                      for(i=0; i < all.length; i += 1) {  
+                      all[i].SourceElement().parentNode.className += ' has-jax';  
+                      }  
+                      });  
+    </script>  
+  
+<script type="text/javascript"  
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">  
+    </script> 
+</div>
+</footer>
+    
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr.js"></script>
+
+
+  </body>
+</html>

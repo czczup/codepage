@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>1051. 复数乘法 (15) - DeepIceCream</title>
+  <meta name="author" content="nonoka">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://czczup.github.io/blog/20170408/pat-basic-level-1051/">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="DeepIceCream" type="application/atom+xml">
+
+  <!-- http://opengraphprotocol.org/ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://czczup.github.io/blog/20170408/pat-basic-level-1051/">
+  <meta property="og:title" content="1051. 复数乘法 (15) - DeepIceCream">
+  
+
+  <script src="/javascripts/libs/jquery/jquery-2.1.3.min.js"></script>
+
+<link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+
+
+  
+  <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+  <body   >
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" title="toggle navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">DeepIceCream</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a rel="index" href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="navbar-form navbar-right" action="https://www.baidu.com/search" method="GET">
+                    <input type="hidden" name="sitesearch" value="czczup.github.io">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" role="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9" itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="name" content="DeepIceCream" />
+    
+    <meta itemprop="url" content="http://czczup.github.io" />
+    <article class="hentry" role="article" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-04-08T18:41:22+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-04-08(Sat)</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title" itemprop="name headline">
+        1051. 复数乘法 (15)
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix" itemprop="articleBody description"><p>&#160; &#160; &#160; &#160;复数可以写成(A + B<strong>i</strong>)的常规形式，其中A是实部，B是虚部，i是虚数单位，满足i<sup>2</sup> = -1；也可以写成极坐标下的指数形式(R*e<sup>P<strong>i</strong></sup>)，其中R是复数模，P是辐角，<strong>i</strong>是虚数单位，其等价于三角形式 R(cos(P) + <strong>i</strong>sin(P))。</p>
+
+<!--more-->
+
+
+<pre><code>&amp;#160; &amp;#160; &amp;#160; &amp;#160;现给定两个复数的R和P，要求输出两数乘积的常规形式。
+
+输入格式：
+输入在一行中依次给出两个复数的R1, P1, R2, P2，数字间以空格分隔。
+
+输出格式：
+在一行中按照“A+Bi”的格式输出两数乘积的常规形式，实部和虚部均保留2位小数。注意：如果B是负数，则应该写成“A-|B|i”的形式。
+
+输入样例：
+2.3 3.5 5.2 0.4
+
+输出样例：
+-8.68-8.23i
+</code></pre>
+
+<hr />
+
+<h3>思路</h3>
+
+<ol>
+<li><p>推导可得复数乘法公式：$ (a+bi)*(c+di)=(ac-bd)+(ad+bc)i $</p></li>
+<li><p>由于浮点数计算存在误差，可能会得到<code>A = -0.000001</code>或<code>B = -0.000001</code>这样的结果，如果直接用<code>A&gt;=0</code>或<code>B&gt;=0</code>去判断，会导致输出的符号出错，所以需要对A、B重新赋0。</p></li>
+</ol>
+
+
+<hr />
+
+<figure class='code'><figcaption><span>C语言实现 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;math.h&gt;</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">R1</span><span class="p">,</span><span class="n">P1</span><span class="p">,</span><span class="n">R2</span><span class="p">,</span><span class="n">P2</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%lf %lf %lf %lf&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">R1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">P1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">R2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">P2</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">A</span> <span class="o">=</span> <span class="n">R1</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">R2</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">P2</span><span class="p">)</span> <span class="o">-</span> <span class="n">R1</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">R2</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">P2</span><span class="p">);</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">B</span> <span class="o">=</span> <span class="n">R1</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">R2</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">P2</span><span class="p">)</span> <span class="o">+</span> <span class="n">R1</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="n">R2</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">P2</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0001</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0001</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2lf%.2lfi&quot;</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2lf+%.2lfi&quot;</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><img src="/images/patb/1051.png"></p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by <span class="fn" itemprop="name">nonoka</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2017-04-08T18:41:22+08:00"  data-updated="true" itemprop="datePublished dateCreated">2017-04-08(Sat)</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/patyi-ji/'>pat乙级</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/20170408/pat-basic-level-1050/" title="Previous Post: 1050. 螺旋矩阵 (25)">&laquo; 1050. 螺旋矩阵 (25)</a></li>
+            
+            
+            <li class="next"><a href="/blog/20170410/pat-basic-level-1015/" title="Next Post: 1015. 德才论 (25)">1015. 德才论 (25) &raquo;</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="/blog/20180213/pat-basic-level-1034/">1034. 有理数四则运算 (20)</a>
+    
+    <a class="list-group-item " href="/blog/20170501/pat-basic-level-1045/">1045. 快速排序 (25)</a>
+    
+    <a class="list-group-item " href="/blog/20170420/pat-basic-level-1054/">1054. 求平均值 (20)</a>
+    
+    <a class="list-group-item " href="/blog/20170417/pat-basic-level-1053/">1053. 住房空置率 (20)</a>
+    
+    <a class="list-group-item " href="/blog/20170411/pat-basic-level-1030/">1030. 完美数列 (25)</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2018 - nonoka<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+<!-- MathJax -->  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       inlineMath: [ ['$','$'], ["\\(","\\)"] ],  
+                       processEscapes: true  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Config({  
+                       tex2jax: {  
+                       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']  
+                       }  
+                       });  
+    </script>  
+  
+<script type="text/x-mathjax-config">  
+    MathJax.Hub.Queue(function() {  
+                      var all = MathJax.Hub.getAllJax(), i;  
+                      for(i=0; i < all.length; i += 1) {  
+                      all[i].SourceElement().parentNode.className += ' has-jax';  
+                      }  
+                      });  
+    </script>  
+  
+<script type="text/javascript"  
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">  
+    </script> 
+</div>
+</footer>
+    
+
+
+
+
+
+
+
+
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr.js"></script>
+
+
+  </body>
+</html>
